@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -153,8 +154,12 @@ public class MainActivity extends AppCompatActivity {
         public ImageView img;
         public TextView UserId;
         public TextView UserName;
+        public ImageView like;
+
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            like=itemView.findViewById(R.id.like);
             img = itemView.findViewById(R.id.img);
             UserId = itemView.findViewById(R.id.UserId);
             UserName =itemView.findViewById(R.id.UserName);
@@ -164,13 +169,28 @@ public class MainActivity extends AppCompatActivity {
             ImageHelper.displayWebImage(video.getImageUrl(), img);
             UserId.setText("----"+video.getStudentId());
             UserName.setText("@"+video.getUserName());
-
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     VideoActivity.launch(activity, video.getVideoUrl());
                 }
             });
+            final boolean[] judge = {false};
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View v) {
+                    judge[0] =!judge[0];
+                    if(judge[0])
+                    {
+                        like.setColorFilter(Color.RED);
+                    }
+                    else {
+                        like.setColorFilter(Color.WHITE);
+                    }
+                }
+            });
+
         }
     }
 

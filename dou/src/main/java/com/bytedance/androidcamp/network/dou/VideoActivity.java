@@ -23,6 +23,7 @@ public class VideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+
         String url = getIntent().getStringExtra("url");
         VideoView videoView = findViewById(R.id.video_container);
         final ProgressBar progressBar = findViewById(R.id.progress_bar);
@@ -38,4 +39,7 @@ public class VideoActivity extends AppCompatActivity {
         });
         progressBar.setVisibility(View.VISIBLE);
     }
+
+
+
 }
