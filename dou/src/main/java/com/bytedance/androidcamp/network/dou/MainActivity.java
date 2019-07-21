@@ -14,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -70,6 +72,26 @@ public class MainActivity extends AppCompatActivity {
         initBtns();
         fetchFeed(mBtnRefresh);
     }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_item:
+                Intent intent=new Intent(MainActivity.this,Exercises3.class);
+                startActivity(intent);
+                break;
+            case R.id.remove_item:
+
+                break;
+        }
+        return true;
+    }
+
     private boolean requestReadExternalStoragePermission(String explanation) {
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
@@ -140,8 +162,8 @@ public class MainActivity extends AppCompatActivity {
 
         public void bind(final Activity activity, final Video video) {
             ImageHelper.displayWebImage(video.getImageUrl(), img);
-            UserId.setText("用户ID:"+video.getStudentId());
-            UserName.setText("用户名:"+video.getUserName());
+            UserId.setText("----"+video.getStudentId());
+            UserName.setText("@"+video.getUserName());
 
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -241,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO 9: post video & update buttons
         Log.d("postVideo","prepare_1");
-        Call<results> call = getDouyinService().PostVideo("317010XXXX","fishXXXX",coverImagePart,videoPart);
+        Call<results> call = getDouyinService().PostVideo("1120170736","Gy",coverImagePart,videoPart);
         Log.d("postVideo","prepare_2");
         call.enqueue(new Callback<results>() {
             @Override
@@ -258,7 +280,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this, "TODO 9: post video & update buttons", Toast.LENGTH_SHORT).show();
     }
 
     public  class Feed{
@@ -286,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     mVideos=response.body().feeds;
                     mRv.getAdapter().notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, "retrofit: " + response.body().feeds.get(0).getStudentId(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "已刷新", Toast.LENGTH_SHORT).show();
                     mBtnRefresh.setText("reflesh feed");
                     mBtnRefresh.setEnabled(true);
                 }
@@ -300,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Toast.makeText(this, "TODO 10: get videos & update recycler list", Toast.LENGTH_SHORT).show();
     }
 
     private IMiniDouyinService getDouyinService() {

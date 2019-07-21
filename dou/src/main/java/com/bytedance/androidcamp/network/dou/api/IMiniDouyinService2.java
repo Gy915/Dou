@@ -15,7 +15,7 @@ import retrofit2.http.Part;
 public interface IMiniDouyinService2 {
 
     @Multipart
-    @POST("mini_douyin/invoke/video?student_id=123456&user_name=BHLT")
+    @POST("mini_douyin/invoke/video?student_id=1120170736&user_name=Gy")
     Call<PostVideoResponse> postVideo(
             @Part MultipartBody.Part aImage,
             @Part MultipartBody.Part aVideo
