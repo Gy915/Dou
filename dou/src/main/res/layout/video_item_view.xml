@@ -39,18 +39,21 @@
                     android:id="@+id/UserName"
                     android:layout_width="201dp"
                     android:layout_height="92dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left"
+                    android:gravity="left"
                     android:layout_weight="1"
                     android:text="用户昵称"
                     android:textColor="@color/white_record"
-                    android:textSize="40dp" />
+                    android:textSize="30dp" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="174dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
                     app:srcCompat="@drawable/ic_love__copy" />
             </LinearLayout>
             <TextView
@@ -61,7 +64,7 @@
                 android:layout_weight="1"
                 android:text="用户id"
                 android:textColor="@color/white_record"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 android:typeface="sans" />
 
 
