@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtnRefresh;
     public MultipartBody.Part cover_image;
     public MultipartBody.Part video;
+    public boolean judege=false;
 
 
     // TODO 8: initialize retrofit & miniDouyinService
@@ -88,7 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.remove_item:
 
+                    Toast.makeText(this,"offline!/online!", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.sign_up:
+                    Intent intent2=new Intent(MainActivity.this,sign_up.class);
+                    startActivity(intent2);
+                    break;
+
         }
         return true;
     }
@@ -175,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     VideoActivity.launch(activity, video.getVideoUrl());
                 }
             });
+
             final boolean[] judge = {false};
             like.setOnClickListener(new View.OnClickListener() {
                 @Override

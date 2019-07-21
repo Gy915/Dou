@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="horizontal"
+tools:context=".signup1">
+<Button
+    android:background="@color/white_record"
+    android:id="@+id/danshengou"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:textSize="60dp"
+    android:text="SINGLE"
+    android:visibility="visible"/>
+
+<Button
+    android:background="@color/white_record"
+    android:id="@+id/xianchong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:textSize="50dp"
+    android:text="double~double"
+    android:textColor="@color/red_no"
+    android:visibility="visible"/>
+</LinearLayout>
